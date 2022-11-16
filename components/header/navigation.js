@@ -1,0 +1,33 @@
+import Link from "next/link";
+
+export default function Navigation(){
+  const links = [
+    {
+      location: '/jobs',
+      text: 'JOBS'
+    },
+    {
+      location: '/internal',
+      text: 'INTERNAL'
+    }
+  ]
+
+  return <nav 
+    className="border-b-2 border-solid border-[#737373ac] px-4 py-2"
+  >
+    <ul className="flex flex-row gap-8 text-white">
+      {
+        links.map((link, key) => {
+          return <Link 
+            key={key}
+            href={link.location}
+          >
+            <a className="hover:text-indigo-700">
+              {link.text}
+            </a>
+          </Link>
+        })
+      }
+    </ul>
+  </nav>
+}
