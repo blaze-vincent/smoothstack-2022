@@ -16,7 +16,7 @@ export default function Navigation(){
   ]
 
   return <nav 
-    className="border-b-2 border-solid border-[#737373ac] px-4 py-2"
+    className="border-b-2 border-solid border-[#ffffff30] px-4 py-2"
   >
     <ul className="flex flex-row gap-4 text-white">
       {
@@ -29,7 +29,7 @@ export default function Navigation(){
                 {link.text}
                 {
                   link.location === router.asPath ? <div
-                    className="w-full -bottom-3 h-2 absolute left-0 bg-indigo-700 bg-gradient-to-r from-fuchsia-700 to-indigo-700"
+                    className="w-full -bottom-3 h-[0.4rem] absolute left-0 bg-indigo-700 bg-gradient-to-r from-fuchsia-700 to-indigo-700"
                   /> : null
                 }
               </a>
