@@ -3,7 +3,7 @@ import Header from './header/header'
 import Footer from './footer'
 
 export default function Layout({children}){
-  return (<div className="bg-neutral-900 relative">
+  return (<div className="bg-neutral-100 relative">
     <Head>
       <title>Smoothstack</title>
       <meta name="description" content="bv nextjs template with tailwindcss" />
