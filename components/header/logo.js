@@ -2,9 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from '../../static/smoothstack-logo.webp'
 
-export default function Logo(){
+export default function Logo({widthOverride}){
   return <div 
-    className="w-[25rem] max-w-full"
+    className={`w-[25rem] max-w-full`}
+    style={ widthOverride ? {
+      width: widthOverride * 16
+    } : null}
   >
     <Link href='/'>
       <a>
