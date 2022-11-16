@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   mongo:
-    container_name: template-mongo
+    container_name: mongo-smoothstack
     image: mongo:latest
     restart: always
     ports:
@@ -12,4 +12,5 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: root-db
     volumes:
-      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongo-volume:/data/db
+      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
