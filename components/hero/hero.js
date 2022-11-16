@@ -1,9 +1,9 @@
-import BackgroundVideo from "./backgroundVideo";
+import BackgroundContent from "./backgroundContent/backgroundContent";
 import TextOverlay from "./textOverlay";
 
-export default function Hero(){
+export default function Hero({backgroundMedia, h1Content, h2Content}){
   return <div>
-    <BackgroundVideo />
-    <TextOverlay />
+    <BackgroundContent media={backgroundMedia} />
+    <TextOverlay h1Content={h1Content} h2Content={h2Content} />
   </div>
 }
