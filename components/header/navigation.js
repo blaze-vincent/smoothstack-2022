@@ -30,9 +30,7 @@ export default function Navigation(){
                 {
                   link.location === router.asPath ? <div
                     className="w-full -bottom-3 h-2 absolute left-0 bg-indigo-700 bg-gradient-to-r from-fuchsia-700 to-indigo-700"
-                  >
-                    
-                  </div> : null
+                  /> : null
                 }
               </a>
           </Link>
