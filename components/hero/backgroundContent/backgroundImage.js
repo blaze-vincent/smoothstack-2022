@@ -10,5 +10,6 @@ export default function BackgroundImage({mediaSrc}){
       objectFit='cover'
       alt=''
     />
+    <div className='absolute w-full h-full block bg-black opacity-30'/>
   </div>
 }
