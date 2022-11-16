@@ -2,6 +2,7 @@ import Logo from "../header/logo";
 import FooterLink from "./footerLink";
 import FooterSection from "./footerSection";
 import FooterSectionTitle from "./footerSectionTitle";
+import FooterSocials from "./footerSocials";
 import FooterText from "./footerText";
 
 export default function Footer(){
@@ -41,6 +42,7 @@ export default function Footer(){
       <FooterSection>
         <Logo widthOverride={18} />
         <FooterSectionTitle title='Connect with Us' />
+        <FooterSocials />
         <FooterText>
           <FooterLink href='https://jobs.smoothstack.com/contact-us?form=build-your-team&' text='Contact Smoothstack'/>
         </FooterText>
