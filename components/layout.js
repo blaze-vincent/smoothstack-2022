@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Header from './header/header'
-import Footer from './footer'
+import Footer from './footer/footer'
 
 export default function Layout({children}){
   return (<div className="bg-neutral-100 relative">
