@@ -1,11 +1,10 @@
-print('adding api user to database')
-
-db = db.getSiblingDB('api_db');
+db = db.getSiblingDB('api');
 db.createUser(
   {
     user: 'api_user',
     pwd: 'api1234',
-    roles: [{ role: 'readWrite', db: 'api_db' }],
+    roles: [
+      { role: 'readWrite', db: 'api' },
+    ],
   },
 );
-db.createCollection('users');
