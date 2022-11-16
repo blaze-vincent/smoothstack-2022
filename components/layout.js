@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Header from './header'
+import Header from './header/header'
 import Footer from './footer'
 
 export default function Layout({children}){
@@ -15,7 +15,7 @@ export default function Layout({children}){
 
     <Header />
 
-    <main className="h-screen pt-40">{children}</main>
+    <main>{children}</main>
 
     <Footer />
   </div>)
