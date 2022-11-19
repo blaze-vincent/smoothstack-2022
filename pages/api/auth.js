@@ -12,6 +12,10 @@ export const config = {
 
 const handler = nextConnect()
 .post(upload.none(), async (req, res) => {
+  if(req.session.authenticated){
+    return res.status(200).json({authenticated: true});
+  }
+
   const {
     username,
     password
