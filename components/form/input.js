@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 export default function Input({defaultValue = null, label, type, name, onChange = e => {}}){
   const [selected, setSelected] = useState(defaultValue);
   const [inputProvided, setInputProvided] = useState(false);
-  const detectInput = e => {
-    onChange(e)
-    setInputProvided(!!e.target.value)
+  const inputEl = useRef(null);
+
+  const detectInput = () => {
+    setInputProvided(!!inputEl.current.value)
   }
+  useEffect(() => {
+    detectInput()
+  }, [])
 
   return <div
     className='relative h-max w-full'
@@ -19,11 +23,15 @@ export default function Input({defaultValue = null, label, type, name, onChange 
       }}
     >{label}</label>
     <input
+      ref={inputEl}
       defaultValue={defaultValue || ''}
       className="border-solid border-neutral-900 border p-2 w-full"
       type={type} 
       name={name}
-      onChange={detectInput}
+      onChange={e => {
+        onChange(e)
+        detectInput()
+      }}
       onFocus={() => {setSelected(true)}}
       onBlur={() => {setSelected(false)}}
     />
