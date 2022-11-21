@@ -1,13 +1,24 @@
-export default function Form({label, handleSubmit, children}){
+export default function Form({label, route, method = 'POST', handleSuccess, children}){
   const onSubmit = e => {
     e.preventDefault()
-    const responses = {}
+
+    const body = new FormData();
     Array.from(e.target.elements)
       .filter(element => element.name)
       .forEach(element => {
-        responses[element.name] = element.value
+        body.append(element.name, element.value)
       })
-    handleSubmit(responses)
+    
+    fetch(route, {
+      method,
+      body
+    }).then(res => {
+      if(res.ok){
+        return res.json()
+      }
+    }).then(json => {
+      handleSuccess(json)
+    })
   }
 
   return <div className="flex flex-col items-start w-[30rem] gap-4">
