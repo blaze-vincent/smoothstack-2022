@@ -40,13 +40,12 @@ export default function Internal(){
     />
     {signedIn ? <div>
       <CreateJobListingForm updateFlag={setJobsNeedUpdated} /> 
-      {
-        jobs ? <JobListings 
+      <hr className="mx-8"/>
+      <JobListings 
           jobs={jobs} 
           updateFlag={setJobsNeedUpdated}
           admin={true}
-        /> : null
-      }  
+      />
     </div>: <SignInForm onSignIn={setSignedIn} />}
   </div>
 }
