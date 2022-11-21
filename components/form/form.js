@@ -15,6 +15,8 @@ export default function Form({label, route, method = 'POST', handleSuccess, chil
     }).then(res => {
       if(res.ok){
         return res.json()
+      } else {
+        return { error: 'res.ok is false' }
       }
     }).then(json => {
       handleSuccess(json)
