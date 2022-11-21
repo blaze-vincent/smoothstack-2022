@@ -52,7 +52,7 @@ const handler = nextConnect()
   if(!jobListing){
     return res.status(404).json({error: 'Cannot find specified job listing'})
   }
-  return res.status(204).json({jobListing})
+  return res.status(200).json({jobListing})
 })
 
 export default handler;
