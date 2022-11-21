@@ -1,8 +1,8 @@
-export default function UpdateButton({jobData, updateMode, setUpdateMode, updateFlag}){
+export default function UpdateButton({getFields, updateMode, setUpdateMode, updateFlag}){
   const onClick = () => {
     const body = new FormData()
-    Object.entries(jobData).forEach(([key, val]) => {
-      body.append(key, val)
+    getFields().forEach(obj => {
+      body.append(obj.key, obj.val)
     })
     if(updateMode){
       fetch('/api/joblistings', {

@@ -1,58 +1,46 @@
 import DeleteButton from "./deleteButton"
 import UpdateButton from "./updateButton";
-import { useState } from "react"
-import Input from "../form/input";
+import { useState, useRef } from "react"
+import FieldEditable from "../form/fieldEditable";
 
 export default function Job({jobData, admin, updateFlag}){
   const [updateMode, setUpdateMode] = useState(false);
-  const [jobTitle, setJobTitle] = useState(jobData.title);
-  const [jobLocation, setJobLocation] = useState(jobData.location);
-  const [jobCompensation, setJobCompensation] = useState(jobData.compensation);
+  const containerEl = useRef(null)
+  const getFields = () => {
+    const fields = Array.from(containerEl.current.querySelectorAll('input')).map(input => {
+      return {
+        key: input.name,
+        val: input.value
+      }
+    })
+    return fields
+  }
 
-  return <div className="flex flex-col gap-6 p-4 bg-neutral-50 shadow-md shadow-neutral-300 text-xl w-[45rem] max-w-full">
-    {updateMode ? <>
-      <Input 
-        defaultValue={jobData.title} 
-        label='Title' 
-        type='text' 
-        key='title'
-        onChange={e => {
-          setJobTitle(e.target.value)
-        }}
-      />
-      <Input 
-        defaultValue={jobData.location} 
-        label='Location' 
-        type='text' 
-        key='location'
-        onChange={e => {
-          setJobLocation(e.target.value)
-        }}
-      />
-      <Input 
-        defaultValue={jobData.compensation} 
-        label='Compensation' 
-        type='number' 
-        key='compensation'
-        onChange={e => {
-          setJobCompensation(e.target.value)
-        }}
-      />
-    </> : <>
-      <h4
-        className="text-2xl text-indigo-700"
-      >{jobData.title}</h4>
-      <p>{jobData.location}</p>
-      <p>${jobData.compensation}</p>
-    </>}
+  return <div 
+    ref={containerEl}
+    className="flex flex-col gap-6 p-4 bg-neutral-50 shadow-md shadow-neutral-300 text-xl w-[45rem] max-w-full"
+  >
+    <input type='hidden' name='_id' value={jobData._id}/>
+    <FieldEditable 
+      className='text-2xl text-indigo-700'
+      updateMode={updateMode}
+      startingValue={jobData.title} 
+      label='Title'
+    />
+    <FieldEditable 
+      updateMode={updateMode}
+      startingValue={jobData.location} 
+      label='Location'
+    />
+    <FieldEditable 
+      updateMode={updateMode}
+      startingValue={jobData.compensation} 
+      label='Compensation'
+      type="number"
+    />
 
     {admin ? <UpdateButton
-      jobData = {{
-        _id: jobData._id,
-        title: jobTitle,
-        location: jobLocation,
-        compensation: jobCompensation
-      }}
+      getFields={getFields}
       updateMode={updateMode} 
       setUpdateMode={setUpdateMode} 
       updateFlag={updateFlag} 
