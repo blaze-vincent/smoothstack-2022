@@ -22,7 +22,7 @@ export default function Job({jobData, admin, updateFlag}){
   >
     <input type='hidden' name='_id' value={jobData._id}/>
     <FieldEditable 
-      className='text-2xl text-indigo-700'
+      className='text-2xl text-indigo-700 font-semibold'
       updateMode={updateMode}
       startingValue={jobData.title} 
       label='Title'
